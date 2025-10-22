@@ -1,0 +1,139 @@
+{
+	"movies": [
+		{
+			"id": 1,
+			"title": "Inception",
+			"genre": "Sci-Fi, Action",
+			"rating": 8.8,
+			"poster": "https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
+			"description": "A thief who enters the dreams of others must perform the impossible task of planting an idea into a target's subconscious.",
+			"price": 4.99
+		},
+		{
+			"id": 2,
+			"title": "Interstellar",
+			"genre": "Adventure, Drama, Sci-Fi",
+			"rating": 8.6,
+			"poster": "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+			"description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+			"price": 5.49
+		},
+		{
+			"id": 3,
+			"title": "The Dark Knight",
+			"genre": "Action, Crime, Drama",
+			"rating": 9.0,
+			"poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+			"description": "Batman faces the Joker in a deadly psychological and physical test of his ability to fight injustice.",
+			"price": 4.99
+		},
+		{
+			"id": 4,
+			"title": "Avengers: Endgame",
+			"genre": "Action, Adventure, Sci-Fi",
+			"rating": 8.4,
+			"poster": "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+			"description": "After the devastating events of Infinity War, the Avengers unite to reverse Thanos’ snap and restore balance to the universe.",
+			"price": 5.99
+		},
+		{
+			"id": 5,
+			"title": "Joker",
+			"genre": "Crime, Drama, Thriller",
+			"rating": 8.4,
+			"poster": "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+			"description": "A mentally troubled stand-up comedian spirals into madness, leading to the birth of the infamous Joker.",
+			"price": 3.99
+		},
+		{
+			"id": 6,
+			"title": "Spider-Man: No Way Home",
+			"genre": "Action, Adventure, Sci-Fi",
+			"rating": 8.3,
+			"poster": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+			"description": "After his identity is exposed, Peter Parker seeks help from Doctor Strange, triggering chaos across the multiverse.",
+			"price": 5.49
+		},
+		{
+			"id": 7,
+			"title": "Oppenheimer",
+			"genre": "Drama, History",
+			"rating": 8.7,
+			"poster": "https://image.tmdb.org/t/p/w500/bAFmcrM1lCyITXWJ5d7q7r1L2nR.jpg",
+			"description": "The story of scientist J. Robert Oppenheimer and his pivotal role in developing the atomic bomb.",
+			"price": 6.49
+		},
+		{
+			"id": 8,
+			"title": "Dune: Part Two",
+			"genre": "Sci-Fi, Adventure",
+			"rating": 8.8,
+			"poster": "https://image.tmdb.org/t/p/w500/8bcoRX3hQRHufLPSDREdvr3YMXx.jpg",
+			"description": "Paul Atreides joins forces with the Fremen to seek revenge and fulfill his destiny on Arrakis.",
+			"price": 6.99
+		},
+		{
+			"id": 9,
+			"title": "The Batman",
+			"genre": "Action, Crime, Drama",
+			"rating": 8.2,
+			"poster": "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
+			"description": "Batman uncovers corruption in Gotham while tracking down a sadistic killer known as The Riddler.",
+			"price": 5.29
+		},
+		{
+			"id": 10,
+			"title": "Tenet",
+			"genre": "Action, Sci-Fi, Thriller",
+			"rating": 7.8,
+			"poster": "https://image.tmdb.org/t/p/w500/k68nPLbIST6NP96JmTxmZijEvCA.jpg",
+			"description": "A secret agent manipulates the flow of time to prevent World War III in a mind-bending espionage thriller.",
+			"price": 4.99
+		},
+		{
+			"id": 11,
+			"title": "Avatar: The Way of Water",
+			"genre": "Action, Adventure, Fantasy",
+			"rating": 7.7,
+			"poster": "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+			"description": "Jake Sully and Neytiri protect their family when a new threat returns to Pandora.",
+			"price": 6.49
+		},
+		{
+			"id": 12,
+			"title": "Guardians of the Galaxy Vol. 3",
+			"genre": "Action, Adventure, Comedy",
+			"rating": 8.1,
+			"poster": "https://image.tmdb.org/t/p/w500/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
+			"description": "The Guardians face their most personal mission yet to save Rocket’s life and protect their family.",
+			"price": 5.79
+		},
+		{
+			"id": 13,
+			"title": "Black Panther: Wakanda Forever",
+			"genre": "Action, Adventure, Drama",
+			"rating": 7.2,
+			"poster": "https://image.tmdb.org/t/p/w500/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
+			"description": "The leaders of Wakanda fight to protect their nation after King T’Challa’s death and a new global threat emerges.",
+			"price": 5.49
+		},
+		{
+			"id": 14,
+			"title": "John Wick: Chapter 4",
+			"genre": "Action, Thriller",
+			"rating": 8.0,
+			"poster": "https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+			"description": "John Wick uncovers a path to defeating The High Table but faces a new powerful enemy with global alliances.",
+			"price": 6.29
+		},
+		{
+			"id": 15,
+			"title": "Mission: Impossible – Dead Reckoning",
+			"genre": "Action, Adventure, Thriller",
+			"rating": 7.9,
+			"poster": "https://image.tmdb.org/t/p/w500/NNxYkU70HPurnNCSiCjYAmacwm.jpg",
+			"description": "Ethan Hunt and his IMF team race to prevent a deadly weapon from falling into the wrong hands.",
+			"price": 6.59
+		}
+	]
+}

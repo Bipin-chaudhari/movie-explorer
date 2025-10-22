@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Movie Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="topbar">
+        <h1>🎬 Movie Explorer</h1>
+
+        <div class="controls">
+            <input id="searchInput" type="search" placeholder="Search shows..." aria-label="Search shows">
+            <select id="genreFilter" aria-label="Filter by genre">
+                <option value="">All Genres</option>
+            </select>
+            <select id="sortSelect" aria-label="Sort shows">
+                <option value="">Sort</option>
+                <option value="rating-desc">Rating: High → Low</option>
+                <option value="rating-asc">Rating: Low → High</option>
+                <option value="name-asc">Name A → Z</option>
+                <option value="name-desc">Name Z → A</option>
+            </select>
+            <button id="toggleTheme">Toggle Dark/Light</button>
+        </div>
+    </header>
+
+    <main id="showContainer" class="grid"></main>
+
+    <!-- Modal for details -->
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true">
+            <button id="closeModal" class="modal-close" aria-label="Close details">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <small>Data: local <code>json-server</code> (fallback to TVMaze API)</small>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
