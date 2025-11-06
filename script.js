@@ -11,7 +11,7 @@
 */
 
 // ---------- Config ----------
-const LOCAL_API = 'http://localhost:3000/shows'; // json-server
+const LOCAL_API = 'http://localhost:3000/movies'; // json-server
 const REMOTE_API = 'https://api.tvmaze.com/shows'; // fallback
 let API_URL = LOCAL_API; // will attempt local first
 
@@ -32,8 +32,10 @@ let displayedShows = []; // current filtered/sorted list
 const safeImage = (show) => show.image ? (show.image.medium || show.image) : 'https://via.placeholder.com/400x220?text=No+Image';
 const safeOriginalImage = (show) => (show.image && (show.image.original || show.image)) || 'https://via.placeholder.com/800x450?text=No+Image';
 
-// Normalize remote (TVMaze) shape to local shape
+// Normalizing remote (TVMaze) shape to local shape
 function normalizeFromRemote(arr) {
+    console.log();
+
     return arr.map(s => ({
         id: s.id,
         name: s.name,
@@ -45,7 +47,7 @@ function normalizeFromRemote(arr) {
     }));
 }
 
-// ---------- Rendering ----------
+// ---------- Rendering ---------- 5th
 function renderShows(shows) {
     showContainer.innerHTML = '';
     if (!shows.length) {
@@ -85,11 +87,16 @@ function escapeHtml(str) { return String(str || '').replace(/[&<>"']/g, s => ({ 
 async function fetchData() {
     // try local json-server first
     try {
+        
+        
         const res = await fetch(LOCAL_API, { cache: "no-store" });
         if (!res.ok) throw new Error('local not available');
+        console.log("I am okay!");
         const data = await res.json();
         API_URL = LOCAL_API;
         allShows = data;
+        console.log({allShows});
+        
         displayedShows = [...allShows];
         initAfterData();
         return;
@@ -110,7 +117,7 @@ async function fetchData() {
     }
 }
 
-// Called after allShows populated
+// Called after allShows populated --2nd
 function initAfterData() {
     // ensure every show has likes property
     allShows = allShows.map(s => ({ likes: 0, genres: [], rating: null, summary: '', ...s }));
@@ -120,7 +127,7 @@ function initAfterData() {
     applyFiltersAndRender();
 }
 
-// ---------- Filters / Sorting ----------
+// ---------- Filters / Sorting ---------- 3rd
 function populateGenreFilter(shows) {
     const set = new Set();
     shows.forEach(s => (s.genres || []).forEach(g => set.add(g)));
@@ -133,6 +140,7 @@ function populateGenreFilter(shows) {
     });
 }
 
+// ?-- 4th
 function applyFiltersAndRender() {
     const q = (searchInput.value || '').trim().toLowerCase();
 
@@ -227,22 +235,22 @@ function debounce(fn, wait = 200) {
 }
 // Show skeleton cards before data loads
 function showSkeletons(count = 8) {
-  showContainer.innerHTML = '';
-  for (let i = 0; i < count; i++) {
-    const skeleton = document.createElement('div');
-    skeleton.className = 'skeleton-card';
-    skeleton.innerHTML = `
+    showContainer.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+        const skeleton = document.createElement('div');
+        skeleton.className = 'skeleton-card';
+        skeleton.innerHTML = `
       <div class="skeleton skeleton-img"></div>
       <div class="skeleton skeleton-line" style="width: 70%;"></div>
       <div class="skeleton skeleton-line" style="width: 50%;"></div>
       <div class="skeleton skeleton-line" style="width: 40%;"></div>
     `;
-    showContainer.appendChild(skeleton);
-  }
+        showContainer.appendChild(skeleton);
+    }
 }
 
 // Before fetching:
 showSkeletons();
 
-// ---------- Init ----------
+// ---------- Init ----------1st
 fetchData();
