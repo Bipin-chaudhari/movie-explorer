@@ -24,6 +24,7 @@
                 <option value="name-asc">Name A → Z</option>
                 <option value="name-desc">Name Z → A</option>
             </select>
+            <button id="openAddMovieModal" class="accent-btn">Add Movie</button>
             <button id="toggleTheme">Dark/Light</button>
         </div>
     </header>
@@ -35,6 +36,44 @@
         <div class="modal-content" role="dialog" aria-modal="true">
             <button id="closeModal" class="modal-close" aria-label="Close details">&times;</button>
             <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Add Movie Modal -->
+    <div id="addMovieModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true">
+            <button id="closeAddMovieModal" class="modal-close" aria-label="Close add movie form">&times;</button>
+            <section class="add-movie-section">
+                <h2>Add New Movie</h2>
+                <form id="addMovieForm" class="add-movie-form">
+                    <label>
+                        Movie Name
+                        <input type="text" name="name" placeholder="Enter movie name" required>
+                    </label>
+
+                    <label>
+                        Image URL
+                        <input type="url" name="image" placeholder="Enter image URL">
+                    </label>
+
+                    <label>
+                        Rating
+                        <input type="number" name="rating" placeholder="e.g., 8.5" min="0" max="10" step="0.1" required>
+                    </label>
+
+                    <label>
+                        Genres (comma-separated):
+                        <input type="text" name="genres" placeholder="Action, Drama, Comedy" required>
+                    </label>
+
+                    <label>
+                        Summary
+                        <textarea name="summary" placeholder="Write a short movie summary" rows="4" required></textarea>
+                    </label>
+
+                    <button type="submit">Add Movie</button>
+                </form>
+            </section>
         </div>
     </div>
 

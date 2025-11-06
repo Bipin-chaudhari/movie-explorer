@@ -111,6 +111,86 @@ body {
     }
 }
 
+/* ========== Add Movie Form ========== */
+.add-movie-section {
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    margin: 2rem auto;
+    transition: background 0.3s, color 0.3s;
+}
+
+.add-movie-section h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.add-movie-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.add-movie-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.add-movie-form input,
+.add-movie-form textarea {
+    margin-top: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.add-movie-form input:focus,
+.add-movie-form textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(255, 71, 87, 0.3);
+    outline: none;
+}
+
+.add-movie-form button {
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.add-movie-form button:hover {
+    background-color: #ff6b81;
+    transform: translateY(-2px);
+}
+
+/* Responsive form adjustments */
+@media (max-width: 600px) {
+    .add-movie-section {
+        padding: 1.5rem;
+    }
+
+    .add-movie-form button {
+        font-size: 0.95rem;
+    }
+}
+
+
 /* ========== Card Styling ========== */
 .card {
     background-color: var(--card-bg);
@@ -172,6 +252,24 @@ body {
 .like-count {
     font-weight: bold;
 }
+
+.delete-btn {
+    background-color: var(--accent-color);
+    border: none;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s ease;
+    margin-left: 0.5rem;
+}
+
+.delete-btn:hover {
+    background-color: #ff4b4b;
+    transform: scale(1.1);
+}
+
 
 /* ========== Fade-in Animation ========== */
 @keyframes fadeInCard {

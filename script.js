@@ -24,18 +24,21 @@ const toggleThemeBtn = document.getElementById('toggleTheme');
 const modal = document.getElementById('modal');
 const modalBody = document.getElementById('modalBody');
 const closeModal = document.getElementById('closeModal');
+const addMovieForm = document.getElementById('addMovieForm'); // new form for POST
+// ---------- Add Movie Modal Controls ----------
+const addMovieModal = document.getElementById('addMovieModal');
+const openAddMovieModal = document.getElementById('openAddMovieModal');
+const closeAddMovieModal = document.getElementById('closeAddMovieModal');
 
-let allShows = [];      // canonical array of shows used in UI
-let displayedShows = []; // current filtered/sorted list
+let allShows = [];
+let displayedShows = [];
 
 // ---------- Helpers ----------
-const safeImage = (show) => show.image ? (show.image.medium || show.image) : 'https://via.placeholder.com/400x220?text=No+Image';
-const safeOriginalImage = (show) => (show.image && (show.image.original || show.image)) || 'https://via.placeholder.com/800x450?text=No+Image';
+const safeImage = (show) => show.image?.medium ? (show.image.medium || show.image) : 'https://picsum.photos/200/300/?blur';
+const safeOriginalImage = (show) => (show.image && (show.image.original || show.image)) || 'https://picsum.photos/200/300/?blur';
 
 // Normalizing remote (TVMaze) shape to local shape
 function normalizeFromRemote(arr) {
-    console.log();
-
     return arr.map(s => ({
         id: s.id,
         name: s.name,
@@ -47,7 +50,7 @@ function normalizeFromRemote(arr) {
     }));
 }
 
-// ---------- Rendering ---------- 5th
+// ---------- Rendering ----------
 function renderShows(shows) {
     showContainer.innerHTML = '';
     if (!shows.length) {
@@ -65,43 +68,45 @@ function renderShows(shows) {
       <div class="like-row" aria-hidden="true">
         <button class="like-btn" data-id="${show.id}">❤️ Like</button>
         <div class="like-count" data-count-id="${show.id}">${show.likes ?? 0}</div>
+        ${API_URL === LOCAL_API ? `<button class="delete-btn" data-id="${show.id}">Delete</button>` : ''}
       </div>
     `;
-        // click card => details (distinct click event)
         card.addEventListener('click', () => showDetails(show));
-        // like button (stopPropagation)
+
+        // Like button
         const likeBtn = card.querySelector('.like-btn');
         likeBtn.addEventListener('click', async (e) => {
             e.stopPropagation();
             await handleLike(show);
         });
 
+        // Delete button
+        if (API_URL === LOCAL_API) {
+            const deleteBtn = card.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                await handleDelete(show.id);
+            });
+        }
+
         showContainer.appendChild(card);
     });
 }
 
-// Basic HTML escape for text
 function escapeHtml(str) { return String(str || '').replace(/[&<>"']/g, s => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[s]); }
 
-// ---------- Data Fetch ----------
+// ---------- Data Fetching ----------
 async function fetchData() {
-    // try local json-server first
     try {
-        
-        
         const res = await fetch(LOCAL_API, { cache: "no-store" });
         if (!res.ok) throw new Error('local not available');
-        console.log("I am okay!");
         const data = await res.json();
         API_URL = LOCAL_API;
         allShows = data;
-        console.log({allShows});
-        
         displayedShows = [...allShows];
         initAfterData();
         return;
     } catch (err) {
-        // fallback to remote TVMaze
         try {
             const res2 = await fetch(REMOTE_API);
             const remote = await res2.json();
@@ -117,9 +122,7 @@ async function fetchData() {
     }
 }
 
-// Called after allShows populated --2nd
 function initAfterData() {
-    // ensure every show has likes property
     allShows = allShows.map(s => ({ likes: 0, genres: [], rating: null, summary: '', ...s }));
     displayedShows = [...allShows];
 
@@ -127,11 +130,10 @@ function initAfterData() {
     applyFiltersAndRender();
 }
 
-// ---------- Filters / Sorting ---------- 3rd
+// ---------- Filters / Sorting ----------
 function populateGenreFilter(shows) {
     const set = new Set();
     shows.forEach(s => (s.genres || []).forEach(g => set.add(g)));
-    // clear old
     genreFilter.innerHTML = `<option value="">All Genres</option>`;
     Array.from(set).sort().forEach(g => {
         const opt = document.createElement('option');
@@ -140,18 +142,13 @@ function populateGenreFilter(shows) {
     });
 }
 
-// ?-- 4th
 function applyFiltersAndRender() {
     const q = (searchInput.value || '').trim().toLowerCase();
-
-    // filter by search
     let results = allShows.filter(s => s.name.toLowerCase().includes(q) || (s.summary || '').toLowerCase().includes(q));
 
-    // filter by genre
     const genre = genreFilter.value;
     if (genre) results = results.filter(s => (s.genres || []).includes(genre));
 
-    // sort
     const sort = sortSelect.value;
     if (sort === 'rating-desc') results.sort((a, b) => (b.rating || 0) - (a.rating || 0));
     else if (sort === 'rating-asc') results.sort((a, b) => (a.rating || 0) - (b.rating || 0));
@@ -162,13 +159,11 @@ function applyFiltersAndRender() {
     renderShows(displayedShows);
 }
 
-// ---------- Like (persist if local) ----------
+// ---------- Like ----------
 async function handleLike(show) {
-    // increment locally and update UI
     show.likes = (show.likes || 0) + 1;
     updateLikeDisplay(show.id, show.likes);
 
-    // persist to json-server if running local
     if (API_URL === LOCAL_API) {
         try {
             await fetch(`${LOCAL_API}/${show.id}`, {
@@ -176,19 +171,25 @@ async function handleLike(show) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ likes: show.likes })
             });
-        } catch (err) {
-            console.warn('Failed to persist like:', err);
-        }
+        } catch (err) { console.warn('Failed to persist like:', err); }
     }
 }
 
-// update like count UI for a specific id
 function updateLikeDisplay(id, count) {
     const el = document.querySelector(`[data-count-id="${id}"]`);
     if (el) el.textContent = count;
 }
 
-// ---------- Modal (details) ----------
+// ---------- Delete ----------
+async function handleDelete(id) {
+    try {
+        await fetch(`${LOCAL_API}/${id}`, { method: 'DELETE' });
+        allShows = allShows.filter(s => s.id != id);
+        applyFiltersAndRender();
+    } catch (err) { console.warn('Failed to delete movie:', err); }
+}
+
+// ---------- Modal ----------
 function showDetails(show) {
     modalBody.innerHTML = `
     <h2>${escapeHtml(show.name)}</h2>
@@ -203,37 +204,71 @@ function showDetails(show) {
     modal.setAttribute('aria-hidden', 'false');
 }
 
-// close modal
 function closeModalFn() {
     modal.removeAttribute('open');
     modal.style.display = 'none';
     modal.setAttribute('aria-hidden', 'true');
 }
 
-// ---------- Event Listeners (distinct types) ----------
-
-// 1) keyup -> search (distinct event type)
+// ---------- Event Listeners ----------
 searchInput.addEventListener('keyup', debounce(() => applyFiltersAndRender(), 250));
-
-// 2) change -> genre filter (distinct event type)
 genreFilter.addEventListener('change', () => applyFiltersAndRender());
-
-// 3) change -> sort select (same type but different control & callback function)
 sortSelect.addEventListener('change', () => applyFiltersAndRender());
-
-// 4) click -> toggle theme (distinct event type)
 toggleThemeBtn.addEventListener('click', () => document.body.classList.toggle('dark'));
-
-// modal controls (click)
 closeModal.addEventListener('click', closeModalFn);
 modal.addEventListener('click', (e) => { if (e.target === modal) closeModalFn(); });
 
-// ---------- Utilities ----------
-function debounce(fn, wait = 200) {
-    let t;
-    return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
+// ---------- Add Movie Form (POST) ----------
+if (addMovieForm) {
+    addMovieForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const newMovie = {
+            name: e.target.name.value,
+            image: { medium: e.target.image.value, original: e.target.image.value },
+            rating: parseFloat(e.target.rating.value),
+            genres: e.target.genres.value.split(',').map(g => g.trim()),
+            likes: 0,
+            summary: e.target.summary.value
+        };
+        try {
+            const res = await fetch(LOCAL_API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newMovie)
+            });
+            const movie = await res.json();
+            allShows.push(movie);
+            applyFiltersAndRender();
+            e.target.reset();
+        } catch (err) { console.warn('Failed to add movie:', err); }
+    });
 }
-// Show skeleton cards before data loads
+
+if (openAddMovieModal && addMovieModal && closeAddMovieModal) {
+    // Opens Add Movie modal
+    openAddMovieModal.addEventListener('click', () => {
+        addMovieModal.style.display = 'flex';
+        addMovieModal.setAttribute('open', '');
+    });
+
+    // Closes Add Movie modal
+    closeAddMovieModal.addEventListener('click', () => {
+        addMovieModal.style.display = 'none';
+        addMovieModal.removeAttribute('open');
+    });
+
+    // Closes modal when clicking outside the content
+    addMovieModal.addEventListener('click', (e) => {
+        if (e.target === addMovieModal) {
+            addMovieModal.style.display = 'none';
+            addMovieModal.removeAttribute('open');
+        }
+    });
+}
+
+
+// ---------- Utilities ----------
+function debounce(fn, wait = 200) { let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); }; }
 function showSkeletons(count = 8) {
     showContainer.innerHTML = '';
     for (let i = 0; i < count; i++) {
@@ -249,8 +284,6 @@ function showSkeletons(count = 8) {
     }
 }
 
-// Before fetching:
+// ---------- Init ----------
 showSkeletons();
-
-// ---------- Init ----------1st
 fetchData();

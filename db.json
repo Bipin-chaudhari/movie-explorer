@@ -8,7 +8,10 @@
         "original": "https://image.tmdb.org/t/p/original/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg"
       },
       "rating": 8.8,
-      "genres": ["Sci-Fi", "Action"],
+      "genres": [
+        "Sci-Fi",
+        "Action"
+      ],
       "likes": 0,
       "summary": "A thief who enters the dreams of others must perform the impossible task of planting an idea into a target's subconscious."
     },
@@ -20,21 +23,13 @@
         "original": "https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg"
       },
       "rating": 8.6,
-      "genres": ["Adventure", "Drama", "Sci-Fi"],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Sci-Fi"
+      ],
       "likes": 0,
       "summary": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival."
-    },
-    {
-      "id": 3,
-      "name": "The Dark Knight",
-      "image": {
-        "medium": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-        "original": "https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
-      },
-      "rating": 9.0,
-      "genres": ["Action", "Crime", "Drama"],
-      "likes": 0,
-      "summary": "Batman faces the Joker in a deadly psychological and physical test of his ability to fight injustice."
     },
     {
       "id": 4,
@@ -44,7 +39,11 @@
         "original": "https://image.tmdb.org/t/p/original/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
       },
       "rating": 7.8,
-      "genres": ["Action", "Adventure", "Sci-Fi"],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Sci-Fi"
+      ],
       "likes": 0,
       "summary": "A paraplegic marine on an alien planet becomes torn between following orders and protecting the world he feels is his home."
     },
@@ -56,7 +55,10 @@
         "original": "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg"
       },
       "rating": 7.9,
-      "genres": ["Drama", "Romance"],
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
       "likes": 0,
       "summary": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated RMS Titanic."
     },
@@ -68,7 +70,10 @@
         "original": "https://image.tmdb.org/t/p/original/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"
       },
       "rating": 8.7,
-      "genres": ["Sci-Fi", "Action"],
+      "genres": [
+        "Sci-Fi",
+        "Action"
+      ],
       "likes": 0,
       "summary": "A computer hacker learns about the true nature of his reality and his role in the war against its controllers."
     },
@@ -80,7 +85,10 @@
         "original": "https://image.tmdb.org/t/p/original/pRkZNHSLz0GzJQqjK9GcmwF2XyE.jpg"
       },
       "rating": 8.5,
-      "genres": ["Action", "Drama"],
+      "genres": [
+        "Action",
+        "Drama"
+      ],
       "likes": 0,
       "summary": "A former Roman general sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery."
     },
@@ -92,7 +100,9 @@
         "original": "https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
       },
       "rating": 9.3,
-      "genres": ["Drama"],
+      "genres": [
+        "Drama"
+      ],
       "likes": 0,
       "summary": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
     },
@@ -104,7 +114,10 @@
         "original": "https://image.tmdb.org/t/p/original/saHP97rTPS5eLmrLQEcANmKrsFl.jpg"
       },
       "rating": 8.8,
-      "genres": ["Drama", "Romance"],
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
       "likes": 0,
       "summary": "The presidencies of Kennedy and Johnson, Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with a low IQ."
     },
@@ -116,7 +129,11 @@
         "original": "https://image.tmdb.org/t/p/original/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
       },
       "rating": 8.4,
-      "genres": ["Action", "Adventure", "Sci-Fi"],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Sci-Fi"
+      ],
       "likes": 0,
       "summary": "After the devastating events of Infinity War, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."
     },
@@ -128,7 +145,11 @@
         "original": "https://image.tmdb.org/t/p/original/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"
       },
       "rating": 8.5,
-      "genres": ["Crime", "Drama", "Thriller"],
+      "genres": [
+        "Crime",
+        "Drama",
+        "Thriller"
+      ],
       "likes": 0,
       "summary": "In Gotham City, mentally troubled comedian Arthur Fleck embarks on a downward spiral of social revolution and bloody crime."
     },
@@ -140,7 +161,11 @@
         "original": "https://image.tmdb.org/t/p/original/2Pt13lx9WZB0S0Y3v7vI6bH5CEB.jpg"
       },
       "rating": 8.5,
-      "genres": ["Animation", "Adventure", "Drama"],
+      "genres": [
+        "Animation",
+        "Adventure",
+        "Drama"
+      ],
       "likes": 0,
       "summary": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself."
     },
@@ -152,7 +177,10 @@
         "original": "https://image.tmdb.org/t/p/original/eEslKSwcqmiNS6va24Pbxf2UKmJ.jpg"
       },
       "rating": 9.2,
-      "genres": ["Crime", "Drama"],
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
       "likes": 0,
       "summary": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
     },
@@ -164,7 +192,10 @@
         "original": "https://image.tmdb.org/t/p/original/dM2w364MScsjFf8pfMbaWUcWrR.jpg"
       },
       "rating": 8.9,
-      "genres": ["Crime", "Drama"],
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
       "likes": 0,
       "summary": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in tales of violence and redemption."
     },
@@ -176,9 +207,26 @@
         "original": "https://image.tmdb.org/t/p/original/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg"
       },
       "rating": 8.8,
-      "genres": ["Drama"],
+      "genres": [
+        "Drama"
+      ],
       "likes": 0,
       "summary": "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into something much more."
+    },
+    {
+      "id": "6292",
+      "name": "Animal",
+      "image": {
+        "medium": "",
+        "original": ""
+      },
+      "rating": 8.5,
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "likes": 0,
+      "summary": "fwsed erfwerrf"
     }
   ]
 }
